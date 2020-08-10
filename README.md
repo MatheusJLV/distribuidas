@@ -1,6 +1,6 @@
 # Sala de Chat 
 
-> El presente proyecto es una sala de chat implementando nodje y express, con el objetivo de evolucionarlo utilisando pub/sub para distribuir las distintas salas de chat por topico.
+> El presente proyecto es una sala de chat implementando nodejs y express, con el objetivo de evolucionarlo utilizando pub/sub para distribuir las distintas salas de chat por topico.
 
 # Documentación 
 
