@@ -39,6 +39,10 @@ socket.on("conectados", (data) => {
     renderUsuarios(data)
 });
 
+socket.on("desconexion", (data) => {
+    quitarUsuarios(data)
+});
+
 function render(data) {
     var html = data.map(function (elem, index) {
         return (`<div class="w3-col w3-container m12 l9">
@@ -54,10 +58,18 @@ function render(data) {
     sinjQuery();
 }
 
+function quitarUsuarios(data) {
+    
+    
+    console.log(data);
+    var objetivo = document.getElementById(data);
+    objetivo.style.display = "none";
+}
+
 function renderUsuarios(data) {
     var html = data.map(function (elem, index) {
         return (`
-        <li class="list-group-item p-0 bordePersonalizado">
+        <li class="list-group-item p-0 bordePersonalizado" id="${elem.id}">
         <div class="row">
             <div class="col-sm-4">
                 <img src="${elem.foto}" class="rounded fotoUsuario" alt="Perfil">

@@ -56,6 +56,7 @@ class Server {
             });
             socket.on('disconnect', function () {
                 console.log("Se desconecto el usuario: " + socket.id);
+                io.emit("desconexion", socket.id);
             });
             socket.on('mensajeEnviado', function (data) {
                 mensajes.push(data);
