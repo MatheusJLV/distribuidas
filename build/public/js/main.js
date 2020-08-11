@@ -3,13 +3,32 @@ var nombre = "";
 var foto = "";
 var email = "";
 var telf = "";
+var categoria="";
+var dato_nombre="";
+var dato_mail="";
+var dato_telefono="";
+var dato_categoria="";
+var dato_foto="";
+const queryString = window.location.search;
+var urlParams={};
 
 document.addEventListener("DOMContentLoaded", function(event) {
-    nombre = prompt("Ingrese su nombre");
-    foto = prompt("Link de foto", "https://www.creartuavatar.com/images/m7.svg");
-    email = prompt("Ingrese su email(opcional)", "------@example.com");
-    telf = prompt("Ingrese su Telefono(opcional)", "09-------");
-    socket.emit("iniciar", { nombre: nombre, foto: foto, email: email, telf: telf });
+    console.log("aqui chill");
+    console.log(queryString);
+    urlParams = new URLSearchParams(queryString);
+    dato_nombre= urlParams.get('user');
+    dato_mail= urlParams.get('email');
+    dato_telefono= urlParams.get('telf');
+    dato_categoria= urlParams.get('categoria');
+    dato_foto= urlParams.get('foto');
+    console.log(dato_nombre);
+
+    nombre = dato_nombre;
+    foto = dato_foto;
+    email = dato_mail;
+    telf = dato_telefono;
+    categoria=urlParams.get('categoria');
+    socket.emit("iniciar", { nombre: nombre, foto: foto, email: email, telf: telf, categoria:categoria});
 });
 
 socket.on('entrada', (data) => {
@@ -59,7 +78,7 @@ function renderUsuarios(data) {
 
 function enviarMensaje() {
     var mensaje = document.getElementById("inputMsg").value;
-    socket.emit("mensajeEnviado", { author: nombre, text: mensaje })
+    socket.emit("mensajeEnviado", { author: nombre, text: mensaje, cate:categoria})
     document.getElementById("inputMsg").value = "";
 }
 

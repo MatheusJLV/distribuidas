@@ -17,11 +17,15 @@
 </head>
 
 <body>
-    <h1 class="text-center">Sala de chat</h1>
+    <h1 class="text-center">Sala de chat <%= nombre %></h1>
     <div class="container-fluid">
         <div class="row">
             <div class="col-sm-4" style="height: 90vh;  overflow: scroll;">
                 <h5 class="text-center">Participantes</h5>
+                <p id="dato_nombre" class="dato_user"><%=nombre%></p>
+                <p id="dato_mail" class="dato_user"><%=mail%></p>
+                <p id="dato_telefono" class="dato_user"><%=telefono%></p>
+
                 <ul class="list-group" id="usuarios">
                     <li class="list-group-item p-0 bordePersonalizado">
                     </li>

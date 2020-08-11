@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Registro sala de chat</title>
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="/css/index.css">
+
+<script type="text/javascript" src="/socket.io/socket.io.js"></script>
+
+<script src="/js/registro.js"></script>
+<style>
+* {box-sizing: border-box}
+body {font-family: Verdana, sans-serif; margin:0}
+.mySlides {display: none}
+img {vertical-align: middle;}
+
+/* Slideshow container */
+.slideshow-container {
+  max-width: 250px;
+  position: relative;
+  margin: auto;
+}
+
+/* Next & previous buttons */
+.prev, .next {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  width: auto;
+  padding: 16px;
+  margin-top: -22px;
+  color: white;
+  font-weight: bold;
+  font-size: 18px;
+  transition: 0.6s ease;
+  border-radius: 0 3px 3px 0;
+  user-select: none;
+}
+
+/* Position the "next button" to the right */
+.next {
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
+
+/* On hover, add a black background color with a little bit see-through */
+.prev:hover, .next:hover {
+  background-color: rgba(0,0,0,0.8);
+}
+
+/* Caption text */
+.text {
+  color: #0c0101;
+  font-size: 15px;
+  padding: 8px 12px;
+  position: absolute;
+  bottom: 8px;
+  width: 100%;
+  text-align: center;
+}
+
+/* Number text (1/3 etc) */
+.numbertext {
+  color: #0c0101;
+  font-size: 12px;
+  padding: 8px 12px;
+  position: absolute;
+  top: 0;
+}
+
+/* The dots/bullets/indicators */
+.dot {
+  cursor: pointer;
+  height: 15px;
+  width: 15px;
+  margin: 0 2px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+  transition: background-color 0.6s ease;
+}
+
+.active, .dot:hover {
+  background-color: #717171;
+}
+
+/* Fading animation */
+.fade {
+  -webkit-animation-name: fade;
+  -webkit-animation-duration: 1.5s;
+  animation-name: fade;
+  animation-duration: 1.5s;
+}
+
+@-webkit-keyframes fade {
+  from {opacity: .4} 
+  to {opacity: 1}
+}
+
+@keyframes fade {
+  from {opacity: .4} 
+  to {opacity: 1}
+}
+
+/* On smaller screens, decrease text size */
+@media only screen and (max-width: 300px) {
+  .prev, .next,.text {font-size: 11px}
+}
+</style>
+</head>
+<body>
+    <div class="w3-row">
+        <div class="w3-col m12 w3-blue w3-center">
+          <h1>Registro</h1>
+        </div>
+        <div class="w3-col m12 w3-dark-grey w3-center">
+            <form action="/chat" method="get">
+                <label for="user">User:</label><br>
+                <input type="text" id="user" name="user"><br>
+                <label for="email">E-mail:</label><br>
+                <input type="email" id="email" name="email"><br>
+                <label for="email">Telf:</label><br>
+                <input type="telf" id="telf" name="telf"><br>
+                <label for="categoria">categoria:</label><br>
+                <select name="categoria" id="categoria">
+                  <option value="juegos">juegos</option>
+                  <option value="peliculas">peliculas</option>
+                  <option value="comics">comics</option>
+                </select><br>
+
+                <label for="foto">Foto:</label><br>
+                <input type="text" id="input_foto" name="foto">
+
+                <div class="slideshow-container w3-dark-grey">
+
+                  <div class="mySlides fade">
+                    <div class="numbertext">1 / 24</div>
+                    <img src="https://www.creartuavatar.com/images/m1.svg" style="width:100%" name="">
+                    <div class="text">Male 1</div>
+                  </div>
+
+                  <div class="mySlides fade">
+                    <div class="numbertext">2 / 24</div>
+                    <img src="https://www.creartuavatar.com/images/f1.svg" style="width:100%">
+                    <div class="text">Female 1</div>
+                  </div>
+
+                  <div class="mySlides fade">
+                    <div class="numbertext">3 / 24</div>
+                    <img src="https://www.creartuavatar.com/images/m2.svg" style="width:100%">
+                    <div class="text">Male 2</div>
+                  </div>
+
+                  <div class="mySlides fade">
+                      <div class="numbertext">4 / 24</div>
+                      <img src="https://www.creartuavatar.com/images/f2.svg" style="width:100%">
+                      <div class="text">Female 2</div>
+                  </div>
+
+                  <div class="mySlides fade">
+                      <div class="numbertext">5 / 24</div>
+                      <img src="https://www.creartuavatar.com/images/m3.svg" style="width:100%">
+                      <div class="text">Male 3</div>
+                    </div>
+                    
+                    <div class="mySlides fade">
+                      <div class="numbertext">6 / 24</div>
+                      <img src="https://www.creartuavatar.com/images/f3.svg" style="width:100%">
+                      <div class="text">Female 3</div>
+                    </div>
+                    
+                    <div class="mySlides fade">
+                      <div class="numbertext">7 / 24</div>
+                      <img src="https://www.creartuavatar.com/images/m4.svg" style="width:100%">
+                      <div class="text">Male 4</div>
+                    </div>
+                    
+                    <div class="mySlides fade">
+                        <div class="numbertext">8 / 24</div>
+                        <img src="https://www.creartuavatar.com/images/f4.svg" style="width:100%">
+                        <div class="text">Female 4</div>
+                    </div>
+
+                    <div class="mySlides fade">
+                      <div class="numbertext">9 / 24</div>
+                      <img src="https://www.creartuavatar.com/images/m5.svg" style="width:100%">
+                      <div class="text">Male 5</div>
+                    </div>
+                    
+                    <div class="mySlides fade">
+                      <div class="numbertext">10 / 24</div>
+                      <img src="https://www.creartuavatar.com/images/f5.svg" style="width:100%">
+                      <div class="text">Female 5</div>
+                    </div>
+                    
+                    <div class="mySlides fade">
+                      <div class="numbertext">11 / 24</div>
+                      <img src="https://www.creartuavatar.com/images/m6.svg" style="width:100%">
+                      <div class="text">Male 6</div>
+                    </div>
+                    
+                    <div class="mySlides fade">
+                        <div class="numbertext">12 / 24</div>
+                        <img src="https://www.creartuavatar.com/images/f6.svg" style="width:100%">
+                        <div class="text">Female 6</div>
+                    </div>
+                    
+                    <div class="mySlides fade">
+                        <div class="numbertext">13 / 24</div>
+                        <img src="https://www.creartuavatar.com/images/m7.svg" style="width:100%">
+                        <div class="text">Male 7</div>
+                      </div>
+                      
+                      <div class="mySlides fade">
+                        <div class="numbertext">14 / 24</div>
+                        <img src="https://www.creartuavatar.com/images/f7.svg" style="width:100%">
+                        <div class="text">Female 7</div>
+                      </div>
+                      
+                      <div class="mySlides fade">
+                        <div class="numbertext">15 / 24</div>
+                        <img src="https://www.creartuavatar.com/images/m8.svg" style="width:100%">
+                        <div class="text">Male 8</div>
+                      </div>
+                      
+                      <div class="mySlides fade">
+                          <div class="numbertext">16 / 24</div>
+                          <img src="https://www.creartuavatar.com/images/f8.svg" style="width:100%">
+                          <div class="text">Female 8</div>
+                      </div>
+
+                      <div class="mySlides fade">
+                          <div class="numbertext">17 / 24</div>
+                          <img src="https://www.creartuavatar.com/images/m9.svg" style="width:100%">
+                          <div class="text">Male 9</div>
+                        </div>
+                        
+                        <div class="mySlides fade">
+                          <div class="numbertext">18 / 24</div>
+                          <img src="https://www.creartuavatar.com/images/f9.svg" style="width:100%">
+                          <div class="text">Female 9</div>
+                        </div>
+                        
+                        <div class="mySlides fade">
+                          <div class="numbertext">19 / 24</div>
+                          <img src="https://www.creartuavatar.com/images/m10.svg" style="width:100%">
+                          <div class="text">Male 10</div>
+                        </div>
+                        
+                        <div class="mySlides fade">
+                            <div class="numbertext">20 / 24</div>
+                            <img src="https://www.creartuavatar.com/images/f10.svg" style="width:100%">
+                            <div class="text">Female 10</div>
+                        </div>
+                        
+                        <div class="mySlides fade">
+                            <div class="numbertext">21 / 24</div>
+                            <img src="https://www.creartuavatar.com/images/m11.svg" style="width:100%">
+                            <div class="text">Male 11</div>
+                          </div>
+                          
+                          <div class="mySlides fade">
+                            <div class="numbertext">22 / 24</div>
+                            <img src="https://www.creartuavatar.com/images/f11.svg" style="width:100%">
+                            <div class="text">Female 11</div>
+                          </div>
+                          
+                          <div class="mySlides fade">
+                            <div class="numbertext">23 / 24</div>
+                            <img src="https://www.creartuavatar.com/images/m12.svg" style="width:100%">
+                            <div class="text">Male 12</div>
+                          </div>
+                          
+                          <div class="mySlides fade">
+                              <div class="numbertext">24 / 24</div>
+                              <img src="https://www.creartuavatar.com/images/f12.svg" style="width:100%">
+                              <div class="text">Female 12</div>
+                        </div>
+                <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+                <a class="next" onclick="plusSlides(1)">&#10095;</a>
+                </div>
+                <div class="w3-row">
+                    <div class="w3-col m12 w3-dark-grey w3-center">
+                        <input type="submit" value="Ingresar" onclick="capturar()">
+                    </div>
+                </div>
+
+
+            </form>
+        </div>
+    </div>
+
+
+<br>
+
+<script>
+var slideIndex = 1;
+showSlides(slideIndex);
+
+function plusSlides(n) {
+  showSlides(slideIndex += n);
+}
+
+function currentSlide(n) {
+  showSlides(slideIndex = n);
+}
+
+function showSlides(n) {
+  var i;
+  var slides = document.getElementsByClassName("mySlides");
+  if (n > slides.length) {slideIndex = 1}    
+  if (n < 1) {slideIndex = slides.length}
+  for (i = 0; i < slides.length; i++) {
+      slides[i].style.display = "none";
+      slides[i].name = "noactive";  
+  }
+  slides[slideIndex-1].style.display = "block";  
+  slides[slideIndex-1].name = "active";
+  var input_foto=document.getElementById("input_foto");
+  console.log(slides[slideIndex-1].getElementsByTagName("img")[0].src);
+  input_foto.value=slides[slideIndex-1].getElementsByTagName("img")[0].src;
+}
+
+function capturar() {
+    imgurl = ["https://www.creartuavatar.com/images/m1.svg", "https://www.creartuavatar.com/images/f1.svg", "https://www.creartuavatar.com/images/m2.svg", "https://www.creartuavatar.com/images/f2.svg", "https://www.creartuavatar.com/images/m3.svg", "https://www.creartuavatar.com/images/f3.svg", "https://www.creartuavatar.com/images/m4.svg", "https://www.creartuavatar.com/images/f4.svg", "https://www.creartuavatar.com/images/m5.svg", "https://www.creartuavatar.com/images/f5.svg", "https://www.creartuavatar.com/images/m6.svg", "https://www.creartuavatar.com/images/f6.svg", "https://www.creartuavatar.com/images/m7.svg", "https://www.creartuavatar.com/images/f7.svg", "https://www.creartuavatar.com/images/m8.svg", "https://www.creartuavatar.com/images/f8.svg", "https://www.creartuavatar.com/images/m9.svg", "https://www.creartuavatar.com/images/f9.svg", "https://www.creartuavatar.com/images/m10.svg", "https://www.creartuavatar.com/images/f10.svg", "https://www.creartuavatar.com/images/m11.svg", "https://www.creartuavatar.com/images/f11.svg", "https://www.creartuavatar.com/images/m12.svg", "https://www.creartuavatar.com/images/f12.svg"];
+    username = document.getElementById("user").value;
+    email = document.getElementById("email").value;
+    telf = document.getElementById("telf").value;
+    foto = imgurl[0]
+    var slides = document.getElementsByClassName("mySlides");
+    for(i = 0; i < slides.length; i++){
+       if(slides[i].style.display == "block"){
+           foto = imgurl[i];
+       }
+    }
+    /*style="display: block;"*/
+    var newUser = { user : username, email : email, telf : telf, foto : foto};
+    console.log(newUser);
+}
+</script>
+
+</body>
+</html> 

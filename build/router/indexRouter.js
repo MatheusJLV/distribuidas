@@ -12,6 +12,8 @@ class routerIndex {
     }
     config() {
         this.router.get("/", indexController_1.default.cargarIndex);
+        this.router.get("/chat", indexController_1.default.cargarChat);
     }
 }
+
 exports.default = new routerIndex().router;

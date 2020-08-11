@@ -30,6 +30,7 @@ class Server {
     }
     router() {
         this.app.use("/", indexRouter_1.default);
+        this.app.use("/chat", indexRouter_1.default);
     }
     start() {
         this.server = this.app.listen(this.app.get("port"), () => {
@@ -48,6 +49,7 @@ class Server {
                     id: socket.id,
                     email: data.email,
                     telf: data.telf,
+
                 });
                 io.emit("conectados", usuarios);
                 io.emit("entrada", mensajes);
