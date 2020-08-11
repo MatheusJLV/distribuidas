@@ -78,8 +78,10 @@ function renderUsuarios(data) {
 
 function enviarMensaje() {
     var mensaje = document.getElementById("inputMsg").value;
-    socket.emit("mensajeEnviado", { author: nombre, text: mensaje, cate:categoria})
-    document.getElementById("inputMsg").value = "";
+    if(mensaje != ""){
+     socket.emit("mensajeEnviado", { author: nombre, text: mensaje, cate:categoria})
+     document.getElementById("inputMsg").value = "";
+    }
 }
 
 function sinjQuery() {
