@@ -126,7 +126,7 @@ img {vertical-align: middle;}
                 <label for="email">Telf:</label><br>
                 <input type="telf" id="telf" name="telf"><br>
                 <label for="categoria" style="display:none">categoria:</label><br>
-                <select name="categoria" style="display:none" id="categoria">
+                <select name="categoria" id="categoria">
                   <option value="juegos">juegos</option>
                   <option value="peliculas">peliculas</option>
                   <option value="comics">comics</option>
@@ -288,7 +288,8 @@ img {vertical-align: middle;}
                         <input type="submit" value="Ingresar" onclick="capturar()">
                     </div>
                 </div>
-
+                
+              
 
             </form>
         </div>
@@ -340,8 +341,16 @@ function capturar() {
     /*style="display: block;"*/
     var newUser = { user : username, email : email, telf : telf, foto : foto};
     console.log(newUser);
+    
 }
+
+$(document).on('click', '#file-input', function () {
+  console.log( $("#file-input").val());
+
+});
 </script>
+
+
 
 </body>
 </html> 
