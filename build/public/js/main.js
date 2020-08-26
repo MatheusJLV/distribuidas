@@ -44,6 +44,9 @@ document.addEventListener("DOMContentLoaded", function (event) {
     render(data);
   });
 
+  
+
+
   //Subscriptor funciona
 //   const pubsub = new PubSub();
 //   console.log(pubsub);
